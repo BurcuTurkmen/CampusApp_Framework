@@ -1,5 +1,6 @@
 package POM;
 
+import Utils.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -32,19 +33,23 @@ public class LoginPage extends BasePOM{
     private String password = "Richfield2020!";
 
     public void validateUserOnLoginPage() {
+        wait.until(ExpectedConditions.urlContains("mersys"));
+        Driver.wait(2);
         Assert.assertTrue(usernameInput.isDisplayed());
+        Driver.wait(2);
         Assert.assertTrue(passwordInput.isDisplayed());
         Assert.assertTrue(loginButton.isDisplayed());
     }
 
     public void userEnterAdminCredentials() {
-        acceptCookiesButton.click();
-        usernameInput.sendKeys(username);
+        waitUntilVisibleAndClickableThenClick(acceptCookiesButton);
+        wait.until(ExpectedConditions.visibilityOf(usernameInput)).sendKeys(username);
         passwordInput.sendKeys(password);
-        loginButton.click();
+        waitUntilVisibleAndClickableThenClick(loginButton);
     }
 
     public void validateUserSuccessfullyLoggedIn() {
+        //Driver.wait(2);
         wait.until(ExpectedConditions.visibilityOf(dashboardText));
         Assert.assertTrue(dashboardText.isDisplayed());
     }
