@@ -1,5 +1,6 @@
 Feature: Countries Functionality
 
+  @Regression
   Scenario: Create Country
     Given User is on login page
     When User enter admin credentials
@@ -16,6 +17,7 @@ Feature: Countries Functionality
       Then Success message should be displayed
 
 
+      @Regression
       Scenario: Delete Country
         Given User is on login page
         When User enter admin credentials

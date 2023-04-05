@@ -18,4 +18,4 @@ Feature: Citizenship Functionality
 
   Scenario: Delete Citizenship
     When User delete "LatteAmericano" citizenship
-    Then Success message should be displayedBack
+    Then Success message should be displayed
